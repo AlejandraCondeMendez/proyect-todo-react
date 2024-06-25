@@ -11,7 +11,6 @@ const ListaTarea = ({tareasGet})=>{ //tareas que traemos de la API
     }
     return(
         <>  
-       
         {tareasGet.map((iterarTarea)=>(
             <Tarea
             key={iterarTarea.id}

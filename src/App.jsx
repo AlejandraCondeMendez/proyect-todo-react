@@ -48,7 +48,7 @@ export function App() {
   <p>Tareas por hacer {valor2}</p>
   <input  type='text' placeholder='Agregar tarea' onChange={(e)=>setInput(e.target.value)} ref={inputAgregar} /> {/*obtenemos el valor del input (titulo de la tarea)*/}
   <button type='button' onClick={validarInput}>Agregar tarea</button>
-  {tareas.length === 0 ? "NO HAY TAREAS" : <ListaTarea tareasGet={tareas}/>}
+  {tareas.length===0?<p>NO HAY TAREAS</p>:<ListaTarea tareasGet={tareas}/>}
     </>
   )
 }
