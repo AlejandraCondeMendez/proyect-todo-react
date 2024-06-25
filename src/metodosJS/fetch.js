@@ -1,4 +1,4 @@
-const apiURL = 'http://localhost:3000/api/task'
+const apiURL = 'http://localhost:3000/api/task/'
 
 //POST
 const postData = async (objTarea)=>{
@@ -55,7 +55,7 @@ export {putData}
 const deleteData = async (id)=>{
     try {
         const response = await fetch(apiURL+id,{
-            method: 'DELTE',
+            method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
             },

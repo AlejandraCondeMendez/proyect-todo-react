@@ -8,9 +8,6 @@ const ListaTarea = ({tareasGet})=>{ //tareas que traemos de la API
     }
 
     const actulizarTarea = async (tarea)=>{ //función que se agrega al evento del check
-        tarea = {
-            estado: !estado
-        }
         await putData(tarea)
     }
     return(
@@ -20,7 +17,10 @@ const ListaTarea = ({tareasGet})=>{ //tareas que traemos de la API
             key={iterarTarea.id}
             tituloTarea={iterarTarea.titulo}
             btnEvento={()=>btnEliminar(iterarTarea.id)}
-            evento={()=>actulizarTarea({estado:iterarTarea.estado})}  
+            estado={iterarTarea.estado}
+            evento={()=>actulizarTarea( {
+                id:iterarTarea.id,
+                estado:!iterarTarea.estado })}  
             />
         ))}   
         </>
