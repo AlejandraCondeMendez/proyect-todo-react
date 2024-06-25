@@ -46,9 +46,9 @@ export function App() {
   <h1>Lista de tareas</h1>
   <p>tareas completadas {valor}</p>
   <p>Tareas por hacer {valor2}</p>
-  <input  type='text' placeholder='Agregar tarea'  onChange={(e)=>setInput(e.target.value)} ref={inputAgregar} /> {/*obtenemos el valor del input (titulo de la tarea)*/}
+  <input  type='text' placeholder='Agregar tarea' onChange={(e)=>setInput(e.target.value)} ref={inputAgregar} /> {/*obtenemos el valor del input (titulo de la tarea)*/}
   <button type='button' onClick={validarInput}>Agregar tarea</button>
-  <ListaTarea tareasGet={tareas}/>
+  {tareas.length === 0 ? "NO HAY TAREAS" : <ListaTarea tareasGet={tareas}/>}
     </>
   )
 }

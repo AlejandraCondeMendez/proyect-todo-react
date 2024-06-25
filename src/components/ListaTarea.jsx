@@ -1,6 +1,5 @@
 import Tarea from "./Tarea"
 import { deleteData, putData } from "../metodosJS/fetch"
-
 const ListaTarea = ({tareasGet})=>{ //tareas que traemos de la API
 
     const btnEliminar = async (id)=>{ //función que se agregará al evento del botón
@@ -12,6 +11,7 @@ const ListaTarea = ({tareasGet})=>{ //tareas que traemos de la API
     }
     return(
         <>  
+       
         {tareasGet.map((iterarTarea)=>(
             <Tarea
             key={iterarTarea.id}
@@ -22,7 +22,7 @@ const ListaTarea = ({tareasGet})=>{ //tareas que traemos de la API
                 id:iterarTarea.id,
                 estado:!iterarTarea.estado })}  
             />
-        ))}   
+        ))} 
         </>
     )
 }
