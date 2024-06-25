@@ -6,8 +6,9 @@ import { useEffect } from 'preact/hooks'
 import { useRef } from 'preact/hooks'
 
 export function App() {
-  const [tareas, setTareas] = useState([]) //estado de las tareas
 
+  const inputAgregar = useRef('') //validar input
+  const [tareas, setTareas] = useState([]) //estado de las tareas
   const [input, setInput] = useState ('') //estado del imput
   const [valor, setValor] = useState(0) //contador
   const [valor2, setValor2] = useState(0) //contador
@@ -24,7 +25,6 @@ export function App() {
     mostrarTareas()
   }, [tareas])
 
-  
   const agregarTarea = async()=>{ //función que se agrega como evento al botón
     const tareaObj ={
       titulo: input,
@@ -32,14 +32,22 @@ export function App() {
     }
     await postData (tareaObj)
   }
+  const validarInput = () =>{
+    const inputRef = inputAgregar.current.value.trim()
+    if (!inputRef) {
+      alert ("Por favor llene los campos")
+      return
+    }
+    agregarTarea()
+  }
 
   return (
     <>
   <h1>Lista de tareas</h1>
   <p>tareas completadas {valor}</p>
   <p>Tareas por hacer {valor2}</p>
-  <input  type='text' placeholder='Agregar tarea'   onChange={(e)=>setInput(e.target.value)}/> {/*obtenemos el valor del input (titulo de la tarea)*/}
-  <button type='button' onClick={agregarTarea}>Agregar tarea</button>
+  <input  type='text' placeholder='Agregar tarea'  onChange={(e)=>setInput(e.target.value)} ref={inputAgregar} /> {/*obtenemos el valor del input (titulo de la tarea)*/}
+  <button type='button' onClick={validarInput}>Agregar tarea</button>
   <ListaTarea tareasGet={tareas}/>
     </>
   )
