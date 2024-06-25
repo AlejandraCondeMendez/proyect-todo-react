@@ -3,6 +3,7 @@ import './app.css'
 import { getData, postData } from './metodosJS/fetch'
 import ListaTarea from './components/ListaTarea'
 import { useEffect } from 'preact/hooks'
+import { useRef } from 'preact/hooks'
 
 export function App() {
   const [tareas, setTareas] = useState([]) //estado de las tareas
@@ -30,7 +31,6 @@ export function App() {
       estado: false
     }
     await postData (tareaObj)
-    setInput("")
   }
 
   return (
@@ -38,7 +38,7 @@ export function App() {
   <h1>Lista de tareas</h1>
   <p>tareas completadas {valor}</p>
   <p>Tareas por hacer {valor2}</p>
-  <input  type='text' placeholder='Agregar tarea'  onChange={(e)=>setInput(e.target.value)}/> {/*obtenemos el valor del input (titulo de la tarea)*/}
+  <input  type='text' placeholder='Agregar tarea'   onChange={(e)=>setInput(e.target.value)}/> {/*obtenemos el valor del input (titulo de la tarea)*/}
   <button type='button' onClick={agregarTarea}>Agregar tarea</button>
   <ListaTarea tareasGet={tareas}/>
     </>
